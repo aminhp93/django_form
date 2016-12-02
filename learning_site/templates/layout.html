@@ -27,6 +27,13 @@
                 </ul>
             </section>
         </nav>
+        
+        {% if messages %}
+            {% for i in messages %}
+                {{i}}
+            {% endfor %}
+        {% endif %}
+
         {% block content %}{% endblock %}
         <footer class="row columns">
             <hr/>
