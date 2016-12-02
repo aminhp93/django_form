@@ -1,0 +1,25 @@
+{% extends 'courses/layout.html' %}
+
+{% block title %}
+	{{ form.instance.title|default:'New Quiz'}}
+	{{ course.title }}
+	{{ block.super }}
+
+{% endblock %}
+
+{% block breadcrumbs %}
+	<h1>Minh Pham</h1>
+	<a href="{% url 'courses:detail' pk=step.course.pk %}">{{ step.course.title }}</a>
+
+{% endblock %}
+
+{% block content %}
+
+<h1>{{form.instance.title|default:'Make a new quiz'}}</h1>
+<form action="" method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" class="button" value="Save">
+</form>
+
+{% endblock %}

@@ -29,7 +29,7 @@ class Step(models.Model):
 class Text(Step):
     content = models.TextField(blank=True, default='')
     def get_absolute_url(self):
-        return reverse('course:text', kwargs={
+        return reverse('courses:text', kwargs={
                 'course_pk': self.course_id,
                 'step_pk': self.id
             })
@@ -41,7 +41,7 @@ class Quiz(Step):
         verbose_name_plural = "Quizzes"
 
     def get_absolute_url(self):
-        return reverse('course:quiz', kwargs={
+        return reverse('courses:quiz', kwargs={
                 'course_pk': self.course_id,
                 'step_pk': self.id
             })
