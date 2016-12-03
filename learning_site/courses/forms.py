@@ -35,3 +35,19 @@ class AnswerForm(forms.ModelForm):
 			'text',
 			'correct'
 		]
+
+
+AnswerFormSet = forms.modelformset_factory(
+		models.Answer,
+		form=AnswerForm,
+		extra = 2,
+	)
+
+
+AnswerInlineFormSet = forms.inlineformset_factory(
+	models.Question,
+	models.Answer,
+	extra=0,
+	fields=('order','text','correct'),
+	formset=AnswerFormSet,
+	min_num=1)

@@ -19,6 +19,42 @@
 	<form action="" method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
+
+		{{ formset.management_form }}
+
+		<table>
+			<thead>
+				<tr>
+					<th>Order</th>
+					<th>Text</th>
+					<th>Correct</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for form in formset %}
+				<tr>
+					<td>
+						{{form.id}}{{form.order}}
+					</td>
+					<td>
+						{{form.text}}
+					</td>
+					<td>
+						{{form.correct}}
+					</td>
+					{% if form.instance.pk %}
+						{{form.DELETE}}
+					{% else %}
+						<td></td>
+					{% endif %}
+						
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+
 		<input type="submit" class="button" value="Save">
 	</form>
 	{% if user.is_authenticated and form.instance.pk %}
